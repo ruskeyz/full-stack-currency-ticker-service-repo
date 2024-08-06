@@ -1,0 +1,33 @@
+{
+  "name": "currency-ticker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Technical submission task for ",
+  "author": "Ruskeyz",
+  "license": "ISC",
+  "main": "index.ts",
+  "scripts": {
+    "install:client": "npm --prefix=client install",
+    "install:server": "npm --prefix=server install",
+    "test:client": "npm --prefix=client test -- run",
+    "test:server": "npm --prefix=server test",
+    "start:client": "npm --prefix=client run start",
+    "start:server": "npm --prefix=server run start",
+    "test": "npm-run-all test:*",
+    "postinstall": "npm-run-all install:*",
+    "start": "npm-run-all --parallel start:*",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "./client/src/*.{js,jsx,ts,tsx}": "cd client && npm run lint",
+    "./client/src/*.{css,scss,sass}": "cd client && npm run stylelint",
+    "./client/src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": "cd client prettier -w -u"
+  },
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "node-mocks-http": "^1.13.0"
+  }
+}
